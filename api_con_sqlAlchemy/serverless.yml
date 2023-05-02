@@ -1,0 +1,39 @@
+service: my-api
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  registerUser:
+    handler: handler.registerUser
+    events:
+      - http:
+          path: register-user
+          method: post
+  login:
+    handler: handler.login
+    events:
+      - http:
+          path: login
+          method: post
+  updateUser:
+    handler: handler.updateUser
+    events:
+      - http:
+          path: actualizar
+          method: put
+  deleteUser:
+    handler: handler.deleteUser
+    events:
+      - http:
+          path: eliminar
+          method: delete
+    environment:
+      DB_HOST: localhost
+      DB_USER: root
+      DB_PASSWORD: ''
+      DB_NAME: apisever
